@@ -1,0 +1,50 @@
+﻿@model rungreenlake.Models.ViewModels.MailboxViewModel
+
+@{
+    ViewData["Title"] = "Reply";
+}
+
+<h1>Start New Conversation</h1>
+<hr />
+
+<form asp-action="Send">
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Receiver: </label></div>
+        <div class="col-sm-6">
+            <select asp-for="ReceiverID" asp-items="@Model.ReceiverList">
+                <option>Select Receiver</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <span asp-validation-for="ReceiverID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Header:</label></div>
+        <div class="col-sm-6">
+            <input asp-for="Header" class="form-control" />
+        </div>
+        <div class="col-sm-6">
+            <span asp-validation-for="Header" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Body:</label></div>
+        <div class="col-sm-6">
+            <textarea asp-for="Body" class="form-control" style="height:200px;"></textarea>
+        </div>
+        <div class="col-sm-6">
+            <span asp-validation-for="Body" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input type="submit" value="Send" class="btn btn-primary" />
+        </div>
+    </div>
+</form>
+<div>
+    <a asp-action="Mail">Back to List</a>
+</div>
+
