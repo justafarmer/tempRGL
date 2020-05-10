@@ -116,8 +116,16 @@ namespace rungreenlake.web.Areas.Identity.Pages.Account
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? Url.Content("~/");
+            RaceTypeList = new List<SelectListItem>()
+            {
+                new SelectListItem() { Text="One Mile", Value="1"},
+                new SelectListItem() { Text="5 Kilometers", Value="2"},
+                new SelectListItem() { Text="10 Kilometers", Value="3"},
+                new SelectListItem() { Text="Half-Marathon", Value="4"},
+                new SelectListItem() { Text="Full-Marathon", Value="5"}
+            };
 
+            returnUrl = returnUrl ?? Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
 
